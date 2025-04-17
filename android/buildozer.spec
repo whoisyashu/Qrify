@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = MyKivyApp
+title = Qrify
 
 # (str) Package name
-package.name = mykivyapp
+package.name = com.yash.Qrify
 
 # (str) Package version
 version = 1.0.0
