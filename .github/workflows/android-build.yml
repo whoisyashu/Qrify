@@ -28,6 +28,9 @@ jobs:
       run: |
         buildozer android debug
 
+    - name: Check for APK
+      run: ls -l bin/*.apk
+
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
