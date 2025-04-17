@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: 📥 Checkout Repository
@@ -28,23 +28,12 @@ jobs:
             libstdc++6 \
             zlib1g \
             zlib1g-dev \
-            openjdk-8-jdk \
+            openjdk-11-jdk \
             unzip \
             git \
-            python3-pip
-
-      - name: 📦 Install Buildozer & Python deps
-        run: |
-          pip install --upgrade pip
-          pip install buildozer cython
-
-      - name: 🛠 Build APK
-        working-directory: android
-        run: |
-          buildozer android debug
-
-      - name: 📤 Upload APK Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Qrify-APK
-          path: android/bin/*.apk
+            python3-pip \
+            libffi-dev \
+            libssl-dev \
+            libsqlite3-dev \
+            libjpeg-dev \
+            libfreetype
