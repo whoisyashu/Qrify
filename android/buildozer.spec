@@ -1,87 +1,82 @@
+# This is the buildozer.spec file for your Kivy app
+
 [app]
-
 # (str) Title of your application
-title = Qrify
+title = QRify
 
-# (str) Package name
-package.name = com.yash.Qrify
+# (str) Package name (should be a unique name, in reverse domain notation)
+package.name = qrify
 
-# (str) Package version
-version = 1.0.0
+# (str) Package domain (use your own domain, e.g., org.yash)
+package.domain = org.yash
 
-# (str) Application description
-description = A simple Kivy app for Android
+# (str) Application version
+version = 1.0
 
 # (list) Application requirements
-# You can add more libraries if your app uses other dependencies
-# For example: requirements = python3,kivy,someotherlibrary
-requirements = python3,kivy
+# Example: "kivy", "pillow", "sqlalchemy", etc.
+# Separate each dependency with a comma.
+# Make sure to include all the libraries you need, e.g., kivy, kivymd, qrcode
+requirements = python3,kivy,kivymd,qrcode
 
-# (list) Application source includes (e.g., .py files, images, and other assets)
+# (list) Source files to include in the package
+# Include all your necessary files (like .kv files, .py, etc.)
 source.include_exts = py,png,jpg,kv,atlas
 
-# (str) Path to your application source code
-# If your main file is located in the current directory (i.e. where this spec is)
-source.include_dirs = .
+# (str) Icon for the application (must be a .png file)
+icon.filename = %(source.dir)s/icon.png
 
-# (str) Application entry point. This is the name of the Python file that starts the app.
-# For example, if your entry point file is "main.py", you would use:
-# main.source = main.py
-main.source = main.py
-
-# (bool) Indicate whether the app requires a full-screen mode
-fullscreen = 1
-
-# (str) Icon for the app
-# icon.filename = %(source.dir)/icon.png
-
-# (str) The directory where the app will be packaged
-# e.g., /path/to/app
-# source.include_dirs = .
+# (str) Main python file (the entry point of your app)
+# Make sure this is set to the file where your Kivy app starts
+# For example, if your main file is `main.py`, you can leave it as it is.
+source.include_patterns = main.py
 
 [buildozer]
+# (int) Target platform to build for
+target = android
 
-# (str) The directory where the buildozer configuration file is located
-# The default is where you execute buildozer command.
-# buildozer.spec = buildozer.spec
-
-# (str) The name of the directory where the build is created
-# This is the directory containing the apk file once the build is complete
-# output_dir = build
-
-# (str) Path to the android SDK
-# android.sdk_path = /path/to/sdk
-
-# (str) Path to the android NDK
-# android.ndk_path = /path/to/ndk
-
-# (str) Android API version to target
-# (use 'android.api = 29' for Android 10 or 'android.api = 21' for Android 5.0)
+# (str) Android API level to target (e.g., 29 for Android 10, or 21 for Lollipop)
 android.api = 29
 
-# (int) Android NDK version to use
-# (leave blank to let buildozer select the NDK version)
-# android.ndk = 21b
+# (str) Minimum Android API level to support (e.g., 21)
+android.minapi = 21
 
-# (str) Java package name
-# android.package = org.mycompany.myapp
+# (str) Android SDK version (the default is 25)
+android.sdk = 25
 
-# (list) Android permissions required by the app
-# android.permissions = INTERNET,ACCESS_NETWORK_STATE
+# (str) Android NDK version (the default is 19b)
+android.ndk = 19b
 
-# (str) The minimum Android API the app is supported on
-# android.minapi = 21
-
-# (str) The target Android API the app should be built for
-# android.target = 29
-
-# (bool) Set to True to generate a debug APK instead of a release APK
+# (bool) Whether to generate debug APKs or release APKs
+# Set to True to generate debug APKs, False for release
 android.debug = True
 
-# (bool) Set to False to generate a release APK
-# android.release = False
+# (str) Path to the Java SDK
+# This is generally set up automatically, but if you encounter issues,
+# you can specify the path manually.
+# android.javasdk = /path/to/java_sdk
 
-[dependencies]
-# Add any external dependencies here
-# dependencies = libpng, libjpeg, etc.
+# (str) Path to the Android SDK
+# This is generally set up automatically, but if you encounter issues,
+# you can specify the path manually.
+# android.sdk_path = /path/to/android_sdk
 
+# (str) Path to the Android NDK
+# This is generally set up automatically, but if you encounter issues,
+# you can specify the path manually.
+# android.ndk_path = /path/to/android_ndk
+
+# (str) Full path to the .apk file you want to generate
+# This is where your APK will be saved after the build
+# You generally don't need to change this path.
+# android.apkanalysis = %(buildozer.dir)s/bin/
+
+# (bool) Whether or not to include a splash screen
+android.splashscreen = True
+
+# (str) Full path to the .apk icon
+android.icon = %(source.dir)s/icon.png
+
+# (bool) Enable Android permissions required by your app
+# For instance, if your app uses the camera or internet, you will need to add those permissions
+android.permissions = INTERNET, CAMERA
